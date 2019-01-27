@@ -1,4 +1,4 @@
-export default function Flash() {
+const PartyTime = () => {
 
   // setup
 
@@ -13,7 +13,7 @@ export default function Flash() {
 
   handleResize()
 
-  let mouse = { x: 0, y: 0 }
+  let mouse = { x: 400, y: 400 }
 
   window.onmouseover = event =>
     mouse = { x: event.clientX, y: event.clientY }
@@ -63,3 +63,5 @@ export default function Flash() {
 
   render()
 }
+
+export default PartyTime;
