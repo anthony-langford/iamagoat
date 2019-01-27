@@ -11,7 +11,6 @@ export default function Home() {
     <div className="App">
       <header className="App-header">
         <canvas></canvas>
-        John's a dink
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
