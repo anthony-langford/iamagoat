@@ -14,7 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "pm2 start ./server.sh --name yourAppName"
+    "deploy": "pm2 start ./server.sh --name iamagoat"
   },
   "eslintConfig": {
     "extends": "react-app"
