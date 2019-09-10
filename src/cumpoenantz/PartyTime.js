@@ -5,7 +5,7 @@ const PartyTime = () => {
 
   function handleResize() {
     canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.height = window.outerHeight
   }
 
   window.onresize = handleResize
