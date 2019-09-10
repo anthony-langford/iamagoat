@@ -1,14 +1,24 @@
 {
-  "short_name": "iamagoat",
-  "name": "I Am A Goat",
+  "short_name": "Goat",
+  "name": "Goat",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "goat-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "goat-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/?utm_source=a2hs",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

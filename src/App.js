@@ -1,11 +1,11 @@
-import React from 'react';
-import { Router } from '@reach/router';
-import Home from './cumpoenantz/Home';
+import React from 'react'
+import { Router } from '@reach/router'
+import Home from './cumpoenantz/Home'
 
- const App = () => (
+const App = () => (
   <Router>
-    <Home path='/' />
+    <Home path="/" />
   </Router>
-);
+)
 
-export default App;
+export default App
