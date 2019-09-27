@@ -1,4 +1,4 @@
-const PartyTime = () => {
+const partyTime = () => {
   // setup
 
   let canvas = document.querySelector(`canvas`)
@@ -53,4 +53,4 @@ const PartyTime = () => {
   render()
 }
 
-export default PartyTime
+export default partyTime

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 // Components
-import PartyTime from './PartyTime'
+import partyTime from '../helpers/partyTime'
 
 const App = styled.div`
   text-align: center;
@@ -18,12 +18,14 @@ const App = styled.div`
 
 const Home = () => {
   useEffect(() => {
-    PartyTime()
+    partyTime()
   })
 
   return (
     <App>
-      <canvas />
+      <canvas onClick={() => {
+        partyTime();
+      }}/>
     </App>
   )
 }
