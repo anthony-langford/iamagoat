@@ -7,7 +7,7 @@ import PartyTime from './PartyTime'
 const App = styled.div`
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

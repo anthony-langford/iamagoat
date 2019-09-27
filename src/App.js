@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import Home from './cumpoenantz/Home'
+import Home from './components/Home'
 
 const App = () => (
   <Router>
