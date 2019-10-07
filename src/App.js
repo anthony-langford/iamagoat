@@ -4,7 +4,7 @@ import Home from './components/Home'
 
 const App = () => (
   <Router>
-    <Home path="/" />
+    <Home path="/" secretCode={'Your mother'} />
   </Router>
 )
 
