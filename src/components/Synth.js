@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import AudioKeys from 'audiokeys'
 import Tone from 'tone'
 import { scale } from '@tonaljs/scale'
@@ -35,7 +35,7 @@ const Synth = () => {
         //triggered every eighth note.
         let note = sample(notes)
         // output.playNote(note)
-        synth.triggerAttackRelease(note, "8n", time);
+        synth.triggerAttackRelease(note, '8n', time)
       }, '8n').start(0)
       Tone.Transport.start()
 

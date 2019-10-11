@@ -1,24 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 
 // Cool stuff
-import partyTime from '../helpers/partyTime'
+import PartyTime from '../components/PartyTime'
 import Synth from './Synth'
 
-const Home = () => {
-  useEffect(() => {
-    partyTime()
-  })
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #282c34;
+  color: white;
+`
 
-  return (
-    <>
-      <Synth />
-      <canvas
-        onClick={() => {
-          partyTime()
-        }}
-      />
-    </>
-  )
-}
+const Home = () => (
+  <Wrapper>
+    <Synth />
+    <PartyTime />
+  </Wrapper>
+)
 
 export default Home
