@@ -1,20 +1,8 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
 
-// Components
+// Cool stuff
 import partyTime from '../helpers/partyTime'
-
-const App = styled.div`
-  text-align: center;
-  background-color: #282c34;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-`
+import Synth from './Synth'
 
 const Home = () => {
   useEffect(() => {
@@ -22,11 +10,14 @@ const Home = () => {
   })
 
   return (
-    <App>
-      <canvas onClick={() => {
-        partyTime();
-      }}/>
-    </App>
+    <>
+      <Synth />
+      <canvas
+        onClick={() => {
+          partyTime()
+        }}
+      />
+    </>
   )
 }
 
