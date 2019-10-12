@@ -1,51 +1,116 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import AudioKeys from 'audiokeys'
 import Tone from 'tone'
 import { scale } from '@tonaljs/scale'
 import { sample } from 'lodash'
 import WebMidi from 'webmidi'
+import styled from 'styled-components'
 
+import GreetingText from './GreetingText'
+
+const Overlay = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`
+
+// TODO: https://tonejs.github.io/examples/jump.html
 const Synth = () => {
-  useEffect(() => {
-    ctx.resume()
-  })
+  const [showGreeting, setShowGreeting] = useState(true)
 
   let ctx = new AudioContext()
-  var keyboard = new AudioKeys()
+  let keyboard = new AudioKeys()
 
-  var synth = new Tone.PolySynth(6, Tone.Synth, {
+  // TODO: allow intuitive changing of synth type
+  let synth = new Tone.PolySynth(6, Tone.Synth, {
     oscillator: {
       type: 'sine',
     },
   }).toMaster()
 
-  WebMidi.enable(function(err) {
-    if (err) {
-      console.log('WebMidi could not be enabled.', err)
-    } else {
-      console.log('WebMidi enabled!')
-      // console.log(WebMidi.inputs)
-      // console.log(WebMidi.outputs)
+  let loop = new Tone.Loop(time => {
+    // triggered every eighth note.
+    let note = sample(notes)
+    // output.playNote(note)
+    synth.triggerAttackRelease(note, '8n', time)
+  }, '8n')
 
-      let [input] = WebMidi.inputs
-      let [output] = WebMidi.outputs
-      // output.playNote("C3");
+  const keyPressListener = useCallback(({ code }) => {
+    setShowGreeting(false)
+  }, [])
 
-      var loop = new Tone.Loop(function(time) {
-        //triggered every eighth note.
-        let note = sample(notes)
-        // output.playNote(note)
-        synth.triggerAttackRelease(note, '8n', time)
-      }, '8n').start(0)
-      Tone.Transport.start()
+  const memoizedListener = useMemo(() => keyPressListener, [keyPressListener])
 
-      // input.addListener('noteon', 'all', val => {
-      //   console.log(val)
-      //   let note = val.note.name + val.note.octave
-      //   synth.triggerAttackRelease(note, '8n')
+  const enableMidi = () => {
+    WebMidi.enable(err => {
+      if (err) {
+        console.log('WebMidi could not be enabled.', err)
+      } else {
+        console.log('WebMidi enabled!')
+        console.log('Press for 🔊🎉')
+        // console.log(WebMidi.inputs)
+        // console.log(WebMidi.outputs)
+
+        // let [input] = WebMidi.inputs
+        // let [output] = WebMidi.outputs
+        // output.playNote("C3");
+
+        Tone.Transport.start()
+        loop.start()
+
+        // input.addListener('noteon', 'all', val => {
+        //   console.log(val)
+        //   let note = val.note.name + val.note.octave
+        //   synth.triggerAttackRelease(note, '8n')
+        // })
+      }
+
+      keyboard.down(handleKeyDown)
+
+      // keyboard.up(function(note) {
+      //   // do things with the note object
       // })
+    })
+  }
+
+  const addListeners = () => {
+    window.addEventListener('keydown', memoizedListener)
+    window.addEventListener('mousedown', memoizedListener)
+  }
+
+  const removeListeners = () => {
+    window.removeEventListener('keydown', memoizedListener)
+    window.removeEventListener('mousedown', memoizedListener)
+  }
+
+  useEffect(() => {
+    ctx.resume()
+    if (showGreeting) {
+      addListeners()
+    } else {
+      removeListeners()
+      enableMidi()
     }
   })
+
+  let timer = null
+
+  const handleKeyDown = () => {
+    if (loop.state === 'started') {
+      loop.stop()
+    }
+
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      loop.start()
+    }, 2000)
+
+    let note = sample(notes)
+    synth.triggerAttackRelease(note, '8n')
+  }
 
   let scaleType1 = 'c3 piongio'
   let scaleType2 = 'c4 piongio'
@@ -54,16 +119,18 @@ const Synth = () => {
   let { notes: n2 } = scale(scaleType2)
   let notes = [...n1, ...n2]
 
-  keyboard.down(function() {
-    let note = sample(notes)
-    synth.triggerAttackRelease(note, '8n')
-  })
-
-  // keyboard.up(function(note) {
-  //   // do things with the note object
-  // })
-
-  return null
+  return (
+    <Overlay
+      onClick={() => {
+        handleKeyDown()
+      }}
+      onKeyDown={() => {
+        if (showGreeting) setShowGreeting(false)
+      }}
+    >
+      {showGreeting ? <GreetingText>hi</GreetingText> : null}
+    </Overlay>
+  )
 }
 
 export default Synth
