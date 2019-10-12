@@ -2,6 +2,7 @@
   "name": "iamagoat",
   "version": "0.1.0",
   "private": true,
+  "license": "WTFPL",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
