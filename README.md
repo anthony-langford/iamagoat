@@ -1,4 +1,4 @@
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiS1FHT1d1RThLQUV6bzMzZ1JtZzh4T0c1WFJ6V1E5c1ZYeWpIZXJrOGlCOHJlQW5MTkhrYkU1TE9kOElHc3pjcS9yZGlUd2ZySTIxOUtHZ0t0UFpUN2xzPSIsIml2UGFyYW1ldGVyU3BlYyI6Inc4Z1M1TU01N3JFdmZSZ28iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1e0b8c6-e4ff-47d4-b437-538ba3be2825/deploy-status)](https://app.netlify.com/sites/iamagoat/deploys)
 
 [![License: WTFPL](https://upload.wikimedia.org/wikipedia/commons/0/0a/WTFPL_badge.svg)](http://www.wtfpl.net)
 
