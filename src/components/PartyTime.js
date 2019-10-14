@@ -15,7 +15,7 @@ const PartyTime = () => {
 
     handleResize()
 
-    let mouse = { x: 400, y: 400 }
+    let mouse = { x: 200, y: 600 }
 
     window.onmouseover = event => (mouse = { x: event.clientX, y: event.clientY })
 

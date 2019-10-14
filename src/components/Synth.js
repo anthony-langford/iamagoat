@@ -38,7 +38,7 @@ const Synth = () => {
     synth.triggerAttackRelease(note, '8n', time)
   }, '8n')
 
-  const keyPressListener = useCallback(({ code }) => {
+  const keyPressListener = useCallback(() => {
     setShowGreeting(false)
   }, [])
 
@@ -50,7 +50,7 @@ const Synth = () => {
         console.log('WebMidi could not be enabled.', err)
       } else {
         console.log('WebMidi enabled!')
-        console.log('Press for 🔊🎉')
+        
         // console.log(WebMidi.inputs)
         // console.log(WebMidi.outputs)
 
@@ -87,6 +87,7 @@ const Synth = () => {
   }
 
   useEffect(() => {
+    console.log('Press for 🔊🎉')
     ctx.resume()
     if (showGreeting) {
       addListeners()
