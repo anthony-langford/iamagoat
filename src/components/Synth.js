@@ -17,6 +17,7 @@ const Overlay = styled.div`
   height: 100%;
 `
 
+// Initialize synth and create loop
 // TODO: https://tonejs.github.io/examples/jump.html
 const Synth = () => {
   const [showGreeting, setShowGreeting] = useState(true)
